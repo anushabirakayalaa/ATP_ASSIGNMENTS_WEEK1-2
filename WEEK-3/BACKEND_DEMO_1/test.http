@@ -1,0 +1,86 @@
+GET http://localhost:3000/user-api/users 
+###
+
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+  "id": 100,
+  "name": "Anu",
+  "age":21
+}  
+
+
+###
+PUT http://localhost:3000/user-api/users/100
+#why we have put 100? because we are modifying user with id 100
+Content-Type: application/json
+
+{
+  "id": 100,
+  "name": "Anu updated",
+  "age":22
+}  
+### Read a user by id-in form of url parameters
+GET http://localhost:3000/user-api/users/100
+
+###
+DELETE http://localhost:3000/user-api/users/100
+
+
+
+
+
+
+
+###Create Products API in the same file
+#Description of product Obj:
+ # {
+  #  productId,
+   # name,
+    #price,
+    #brand
+  #}
+  #PRODUCT API:
+  #GET     http://127.0.0.1:3000/product-api/products
+  #GET     http://127.0.0.1:3000/product-api/products/<id>
+  #GET     http://127.0.0.1:3000/product-api/products-brand/<brand>
+  #POST    http://127.0.0.1:3000/product-api/products
+  #PUT     http://127.0.0.1:3000/product-api/products/<id>
+  #DELETE  http://127.0.0.1:3000/product-api/products/<id>
+###
+GET http://127.0.0.1:3000/product-api/products
+###
+GET http://127.0.0.1:3000/product-api/products/1
+###
+GET http://127.0.0.1:3000/product-api/products/brand
+
+###
+POST http://127.0.0.1:3000/product-api/products
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "name": "Anusha",
+  "price": 999,
+  "brand": "dell"
+}
+
+
+
+###
+PUT http://127.0.0.1:3000/product-api/products/productId
+Content-Type: application/json 
+
+{
+    "productId":1,
+    "name":"Ashu",
+    "price": 999,
+    "brand" : "dell"
+}
+###
+DELETE http://127.0.0.1:3000/product-api/products/productId
+
+
+
+
