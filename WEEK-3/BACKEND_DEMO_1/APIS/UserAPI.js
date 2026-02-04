@@ -1,15 +1,19 @@
 import exp from 'express'
 //create server
+//Exporting the userApp route handler to make it accesible for user related apis
 export const userApp=exp.Router()
 //create users apis
 //test local in-memory data
 let users=[];
+
 //get req handling routes(read users)
 userApp.get('/users',(req,res)=>{
     //send users data in resp
     res.status(200).json({message:"all users data",payload:users}) //message,payload-(data)      
 //200 status code is for successful operation state 
 })
+
+
 //post req handling routes(create users)
 userApp.post('/users',(req,res)=>{
     //get user data from req body
@@ -19,8 +23,9 @@ userApp.post('/users',(req,res)=>{
     //send resp
     res.status(201).json({message:"user created"})//status code 201 is for created
 })
-//put req handling routes(update users)
 
+
+//put req handling routes(update users)
 userApp.put('/users/:id',(req,res)=>{
     //get modified user data from req body
     let modifieduser=req.body;

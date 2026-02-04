@@ -1,5 +1,7 @@
+###user api requests
 GET http://localhost:3000/user-api/users 
-###
+
+### here user is the resource name the only data is between client and server is json data
 
 POST http://localhost:3000/user-api/users
 Content-Type: application/json
@@ -11,7 +13,9 @@ Content-Type: application/json
 }  
 
 
-###
+### only put and post request have body data and get and delete request do not have body data
+### url has the parameter also
+
 PUT http://localhost:3000/user-api/users/100
 #why we have put 100? because we are modifying user with id 100
 Content-Type: application/json
@@ -53,7 +57,7 @@ GET http://127.0.0.1:3000/product-api/products
 ###
 GET http://127.0.0.1:3000/product-api/products/1
 ###
-GET http://127.0.0.1:3000/product-api/products/brand
+GET http://127.0.0.1:3000/product-api/products-brand/dell
 
 ###
 POST http://127.0.0.1:3000/product-api/products
@@ -69,7 +73,7 @@ Content-Type: application/json
 
 
 ###
-PUT http://127.0.0.1:3000/product-api/products/productId
+PUT http://127.0.0.1:3000/product-api/products/1
 Content-Type: application/json 
 
 {

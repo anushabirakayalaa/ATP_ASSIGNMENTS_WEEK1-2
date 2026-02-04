@@ -1,5 +1,5 @@
 //Create User Schema
-//Create User Model with that schema
+//Create User Model with that schema  
 //========================================================
 //Model => always shld be upper camel case
 import {Schema,model} from "mongoose";
@@ -30,6 +30,7 @@ const userSchema=new Schema(
      strict:"throw",//throws error if voilates anything
      timestamps:true//to get the createdAt and updatedAt times in UTC format
     }
+    //MANGOOSE VALIDATION RULES--required,min,max,patterns(not used here),rigids
 )
 
 //Create User Model with that schema

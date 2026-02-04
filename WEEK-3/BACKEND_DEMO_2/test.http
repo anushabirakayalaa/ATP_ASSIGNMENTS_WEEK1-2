@@ -2,7 +2,7 @@
 GET http://localhost:4000/user-api/users 
 
 ###Read user by ObjectId
-GET http://localhost:4000/user-api/users/697d89624198c80cc52e1ce2
+GET http://localhost:4000/user-api/users/697e0003bc9ceb021a0b0f83
 
 
 
@@ -34,35 +34,55 @@ DELETE http://localhost:4000/user-api/users/697e022c168b22d6b1dc830c
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###CREATING PROUCT API
 #PRODUCT obj schema: {pid,productName,price}
 
-###
+
 GET http://localhost:4000/product-api/products
 
-###create product
-POST http://localhost:4000/product-api/products
-
+###
+POST  http://localhost:4000/product-api/products
 Content-Type: application/json
 
 {
-    "pid":1,
-    "productName":"laptop",
-    "price":999
+    "pid":10,
+    "productname":"chips",
+    "price":20
+}
+###
+GET http://localhost:4000/product-api/products/6983864b7799f11ebbab5ada
+###
+PUT  http://localhost:4000/product-api/products/6983864b7799f11ebbab5ada
+Content-Type: application/json
+
+{
+    "pid":10,
+    "productname":"chips",
+    "price":50
+
 }
 
 
 
+
+
+
+
+
+
+###USER AUTHENTICATION REQUEST
+###user authentication(Login) req
+POST http://localhost:4000/user-api/auth
+Content-Type:
+
+{
+    "username":"Ashu",
+    "password":"abc"
+}
+
+
+
+###Req for protected routr
+
+GET http://localhost:4000/user-api/test
+#Authorization: : Bearer token
