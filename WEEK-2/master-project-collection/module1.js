@@ -1,3 +1,13 @@
+// TASKS
+// ------
+// MODULE-1 :USER PROCESSING ENGINE
+//   -> Get only active users
+//   -> Extract names of active users
+//   -> Check if any admin exists
+//   -> Find user by id
+//   -> Deactivate a user immutably
+
+
 const users = [
   { id: 1, name: "Ravi", role: "student", active: true },
   { id: 2, name: "Anil", role: "admin", active: true },

@@ -13,19 +13,20 @@
 
 const temperatures = [32, 35, 28, 40, 38, 30, 42];
   //  1. filter() temperatures above 35
-let r1=temperatures.filter(temp=>temp>35)
-console.log(r1)
+let filteredTemps=temperatures.filter(temp=>temp>35)
+console.log(filteredTemps)
 
 //covert all temperatures from Celsius → Fahrenheit
-let r2=temperatures.map(temp=>(temp*9/5)+32)
-console.log(r2)
+let fahrenheitTemps=temperatures.map(temp=>(temp*9/5)+32)
+console.log(fahrenheitTemps)
 
 //calculate average temperature
-let r3 = temperatures.reduce((acc,temp)=>acc+temp)
-console.log(r3)
+let sum = temperatures.reduce((acc,temp)=>acc+temp)
+let averageTemp=sum/temperatures.length
+console.log(averageTemp)
 //first temperature above 40
-let r4=temperatures.find(temp=>temp>40)
-console.log(r4)
+let r1=temperatures.find(temp=>temp>40)
+console.log(r1)
 //5. findIndex() of temperature 28
-let r5=temperatures.findIndex(temp=>temp==28)
-console.log(r5)
+let r2=temperatures.findIndex(temp=>temp==28)
+console.log(r2)

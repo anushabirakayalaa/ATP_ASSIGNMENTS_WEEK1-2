@@ -1,0 +1,86 @@
+POST http://localhost:4000/product-api/products
+//infroming expressing for sending json data
+Content-Type: application/json 
+
+{
+  "productName": "Laptop",
+  "price": 80000,
+  "brand": "Dell"
+}
+
+
+
+
+###Create User req
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"Anusha",
+    "email":"anha@mail.com",
+    "password":"Anu1503",
+    "cart":[]
+}
+ 
+
+###Request to add product to cart
+PUT  http://localhost:4000/user-api/user-cart/user-id/69817ba87643a36a8cccad49/product-id/69817db67dc1f2227337e4fe
+//its ok if we dont send the body
+
+###
+GET http://localhost:4000/user-api/users/69817ba87643a36a8cccad49
+
+
+
+
+POST http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "productName":"Laptop",
+    "price":40000,
+    "brand":"DELL"
+
+}
+####
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"vikas",
+    "email":"vikkas@gamil.com",
+    "password":"vikas",
+    "cart":[]
+}
+
+###
+PUT  http://localhost:4000/user-api/user-cart/userid/698072ed5837fda01dc4aa39/productid/698071723f973ee1164d9a42
+
+
+
+
+
+
+
+
+
+//WHAT WE'VE LEARNT
+//create http server
+//
+//backaend is scalable
+//how tob handle errors
+//extract body---
+//api db relayedCRUD
+//user auth
+//how to protct thr route
+//securing the password
+//embedded andr ref document
+//how to handle empty password
+
+
+
+
+
+
+
+

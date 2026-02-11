@@ -58,7 +58,7 @@ userApp.get('/users/:id',(req,res)=>{
     if(!user){
         return res.status(404).json({message:"user not found"})
     }
-    //send res
+    //send resm
     res.status(200).json({message:"user",payload:user})
 })
 //delete req handling routes(delete users)
