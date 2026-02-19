@@ -1,0 +1,43 @@
+body {
+    font-family: serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+/* This makes the image sit on the right and allows text to wrap */
+.profile-pic {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Clears the float so the horizontal line stays at the bottom */
+hr {
+    clear: both;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+.footer {
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Simple styling for the lists */
+ol, ul {
+    margin-left: 20px;
+}

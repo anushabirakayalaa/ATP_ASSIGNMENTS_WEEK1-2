@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    width: 700px;
+    text-align: center;
+    border:1px solid black;
+   /* padding-top: 100px;
+    padding-bottom: 80px;
+    padding-left: 40px;
+    padding-right: 10px;*/
+    padding: 100px 80px 40px 10px;
+    margin: 50px;
+    box-sizing: border-box; /*will include everything with in 700px width only withour taking extra*/
+}
+
+img{
+    display: block;
+    margin: auto;
+
+}
+div{
+    text-align: center;
+}
