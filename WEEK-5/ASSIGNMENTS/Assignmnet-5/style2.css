@@ -1,0 +1,24 @@
+h3{
+    align-items: center;
+    justify-content: center;
+    margin-left: 550px;
+}
+.img1{
+    margin:auto;
+    width:400px;
+    height:300px;
+    border-radius: 20px;
+}
+.img2{
+    padding: auto;
+    width:400px;
+    height:300px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+.img3{
+    width:400px;
+    height:300px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
