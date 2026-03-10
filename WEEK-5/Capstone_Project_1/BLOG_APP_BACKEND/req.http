@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "firstName": "Usha",
     "lastName": "BIR",
-    "email": "usha@Gmail.com",
+    "email": "ushamail.com",
     "password": "1234",
     "profileImageUrl": "https://example.com/avatars/author.png"  
 
@@ -26,10 +26,12 @@ GET http://localhost:4000/user-api/articles
 
 
 ### Commenting on an article
-PUT http://localhost:4000/user-api/user/698c965349ee23be176fe249/article/698ca6634831f82cdda0cd55
+PUT http://localhost:4000/user-api/articles
 Content-Type: application/json
 
 {
+    "user":"698c965349ee23be176fe249",
+    "articleId":"698ca6634831f82cdda0cd55",
     "comment": "This is a comment on the article second time."
 }
 
@@ -100,6 +102,13 @@ Content-Type: application/json
 ###Read articles of a author
 GET http://localhost:4000/author-api/articles/698c9cbe316f7487ffb7a35d
 
+###DELETE ARTICLE
+PATCH http://localhost:4000/author-api/articles/698c9cbe316f7487ffb7a35d/status
+Content-Type: application/json
+
+{
+    "isArticleActive":true
+}
 
 
 

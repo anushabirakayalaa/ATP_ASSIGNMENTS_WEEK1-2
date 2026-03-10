@@ -6,9 +6,14 @@ import { authorRoute } from './APIS/AuthorAPI.js'
 import { adminRoute } from './APIS/AdminAPI.js'
 import cookieParser from "cookie-parser";
 import { commonRoute } from './APIS/CommonAPI.js'
+import cors from 'cors'
 config()//process.env
-//craete express application    
+
+//create express application    
 const app = exp()
+//use cors middleware
+app.use(cors({origin:['http://localhost:5173'],Credentials:true}))
+        //why did we write credentials:true??
 //ADDING BODY PARSER MIDDLEWARE
 app.use(exp.json())//function.function? why
 //add cookie parser middleware
@@ -24,9 +29,9 @@ app.use('/admin-api',adminRoute)
 // {
 //     //clear the cookie named token
 //     res.clearCookie('token',{
-//         httpOnly:true, //Must match origunal settings
-//         secure:false, //Must match origunal settings
-//         sameSite:"lax" //Must match origunal settings
+//         httpOnly:true, //Must match original settings
+//         secure:false, //Must match original settings
+//         sameSite:"lax" //Must match original settings
 //     })
 // })
 //connect to db
@@ -38,7 +43,7 @@ const connectDB = async()=>
     app.listen(process.env.PORT,()=>console.log("Serevr started"))
    }catch(err)
    {
-    console.log("Eroor in DB Connection",err)
+    console.log("Error in DB Connection",err)
    }
 }
 connectDB()
@@ -57,9 +62,52 @@ app.use((req,res,next)=>
 })
 
 //error handling
-app.use((err,req,res,next)=>
-{
-    console.log("ERROR",err)
-    res.json({message:"Error",reason:err.message})
-})
+app.use((err, req, res, next) => {
+
+  console.log("Error name:", err.name);
+  console.log("Error code:", err.code);
+  console.log("Full error:", err);
+
+  // mongoose validation error
+  if (err.name === "ValidationError") {
+    return res.status(400).json({
+      message: "error occurred",
+      error: err.message,
+    });
+  }
+
+  // mongoose cast error
+  if (err.name === "CastError") {
+    return res.status(400).json({
+      message: "error occurred",
+      error: err.message,
+    });
+  }
+
+  const errCode = err.code ?? err.cause?.code ?? err.errorResponse?.code;
+  const keyValue = err.keyValue ?? err.cause?.keyValue ?? err.errorResponse?.keyValue;
+
+  if (errCode === 11000) {
+    const field = Object.keys(keyValue)[0];
+    const value = keyValue[field];
+    return res.status(409).json({
+      message: "error occurred",
+      error: `${field} "${value}" already exists`,
+    });
+  }
+
+  // ✅ HANDLE CUSTOM ERRORS
+  if (err.status) {
+    return res.status(err.status).json({
+      message: "error occurred",
+      error: err.message,
+    });
+  }
+
+  // default server error
+  res.status(500).json({
+    message: "error occurred",
+    error: "Server side error",
+  });
+});
 
