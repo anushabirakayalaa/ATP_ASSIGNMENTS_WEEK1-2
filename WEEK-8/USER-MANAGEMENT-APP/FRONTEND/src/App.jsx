@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from './RootLayout';
 import Home from './components/Home';
 import AddUser from './components/AddUser';
+import RootLayout from './components/RootLayout';
 import UsersList from './components/UsersList';
 import User from './components/User';
 
