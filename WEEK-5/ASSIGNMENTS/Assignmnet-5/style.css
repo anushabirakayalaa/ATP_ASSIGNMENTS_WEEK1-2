@@ -1,0 +1,16 @@
+div{
+    background-color: rgb(178, 178, 248);
+    width:400px;
+    height:200px;
+    margin-left: 450px;
+    margin-top:200px;
+    border-radius: 20px;
+}
+h2{
+    margin-left: 150px;
+    margin-top:50px;
+    padding-top:50px;
+}
+ul{
+    padding-left:170px;
+}

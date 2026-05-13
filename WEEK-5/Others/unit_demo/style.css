@@ -1,0 +1,14 @@
+/*Units demo*/
+
+/* font size rem & em */
+
+
+h1{
+    font-size: 5rem;
+}
+.parent{
+    width: 50%;
+}
+.child{
+    width: 50%;
+}

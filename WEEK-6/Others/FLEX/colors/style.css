@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* creating css variables */
+:root{
+    /* define a var ....start with --*/
+    --heading-color:#bf004a;
+    --button-color:#f2ccda;
+
+}
+
+h1{
+    color: var(--heading-color) ;
+}
+
+button
+{
+    color: var(--button-color);
+}

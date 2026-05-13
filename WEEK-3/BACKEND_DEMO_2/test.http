@@ -1,0 +1,88 @@
+###read all users
+GET http://localhost:4000/user-api/users 
+
+###Read user by ObjectId
+GET http://localhost:4000/user-api/users/697e0003bc9ceb021a0b0f83
+
+
+
+###Create user
+POST  http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "username":"1111",
+    "password":"1111",
+    "age":19
+}
+
+###Update user
+PUT  http://localhost:4000/user-api/users/697e0104bc9ceb021a0b0f89
+Content-Type: application/json
+
+{
+    "username":"Ashu",
+    "password":"abc",
+    "age":19
+}
+
+
+###Delete user by objId
+DELETE http://localhost:4000/user-api/users/697e022c168b22d6b1dc830c
+
+
+
+
+
+###CREATING PROUCT API
+#PRODUCT obj schema: {pid,productName,price}
+
+
+GET http://localhost:4000/product-api/products
+
+###
+POST  http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "pid":10,
+    "productname":"chips",
+    "price":20
+}
+###
+GET http://localhost:4000/product-api/products/6983864b7799f11ebbab5ada
+###
+PUT  http://localhost:4000/product-api/products/6983864b7799f11ebbab5ada
+Content-Type: application/json
+
+{
+    "pid":10,
+    "productname":"chips",
+    "price":50
+
+}
+
+
+
+
+
+
+
+
+
+###USER AUTHENTICATION REQUEST
+###user authentication(Login) req
+POST http://localhost:4000/user-api/auth
+Content-Type:
+
+{
+    "username":"Ashu",
+    "password":"abc"
+}
+
+
+
+###Req for protected routr
+
+GET http://localhost:4000/user-api/test
+#Authorization: : Bearer token
