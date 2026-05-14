@@ -29,6 +29,9 @@ const articleSchema = new Schema({
         type:String,
         required:[true,"Content required"],
     },
+    imageUrl:{
+        type:String,
+    },
     comments:[userCommentSchema],
     isArticleActive:{
         type:Boolean,

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { userAuth } from '../stores/authStore';
 
 function UserDashboard() {
@@ -6,7 +6,7 @@ function UserDashboard() {
 
   useEffect(() => {
     readArticles(); // Fetch articles when dashboard loads
-  }, []);
+  }, [readArticles]);
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">

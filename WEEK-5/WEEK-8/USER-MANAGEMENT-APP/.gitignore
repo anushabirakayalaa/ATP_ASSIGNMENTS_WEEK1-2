@@ -1,0 +1,7 @@
+node_modules
+.npm-cache
+dist
+
+BACKEND/node_modules
+FRONTEND/node_modules
+BACKEND/.env

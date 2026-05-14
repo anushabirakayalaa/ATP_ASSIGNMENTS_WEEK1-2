@@ -1,105 +1,189 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import axios from 'axios'
-import { useNavigate } from 'react-router';
+import { useForm } from "react-hook-form";
+import {
+  pageBackground,
+  formCard,
+  formTitle,
+  formGroup,
+  labelClass,
+  inputClass,
+  submitBtn,
+  errorClass,
+  mutedText,
+  divider,
+  loadingClass,
+} from "../styles/common";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 function Register() {
-    const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm();
-  const[loading,setLoading]=useState(false)
-  const[error,setError]=useState(null)
-  const[]=useState()
-  const navigate = useNavigate()
-  const autherRegister=async(newUser)=>{
-    console.log(newUser)
-    setLoading(true)
-    try{
-    let{role,...userobj}=newUser
-    if(role==="user")
-    {
-      let res= await axios.post("http://localhost:4000/user-api/users",userobj)
-      console.log(res)
-      let reso=res.data
-      console.log(reso)
-      if(reso.status===201)
-      {
-        // after the registration we need to navigate to login page
-        navigate("/login")
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      role: "user",
+    },
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const onUserRegister = async (newUser) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { role, profilePic, ...userObj } = newUser;
+      const formData = new FormData();
+
+      Object.entries(userObj).forEach(([key, value]) => {
+        if (value) {
+          formData.append(key, value);
+        }
+      });
+
+      if (profilePic?.[0]) {
+        formData.append("profilePic", profilePic[0]);
       }
 
-    }
-  
-     if(role==="author")
-     {
-      let res= await axios.post("http://localhost:4000/author-api/users",userobj)
-      let reso=res.data
-      if(reso.status===201)
-      {
-        // after the registration we need to navigate to login page
-        navigate("/login")
+      const endpoint =
+        role === "author"
+          ? "http://localhost:4000/author-api/users"
+          : "http://localhost:4000/user-api/users";
+
+      const resObj = await axios.post(endpoint, formData);
+      if (resObj.status === 201) {
+        toast.success("Registration successful");
+        navigate("/login");
       }
-
-     }
+    } catch (err) {
+      setError(err.response?.data?.error || err.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
-     catch(err){
-      setError(err.response?.data?.error || "Registration Failed")
-     }
-     finally{
-      setLoading(false)
-     }
-
-  }
-
-  const onSubmit = (data) => {
-  autherRegister(data)
   };
 
+  if (loading === true) {
+    return <p className={loadingClass}>Creating your account...</p>;
+  }
+
   return (
-    <div className='min-h-screen flex
-    items-center justify-center bg-purple-100 ' >
-      
+    <div className={`${pageBackground} flex items-center justify-center py-16 px-4`}>
+      <div className={formCard}>
+        <h2 className={formTitle}>Create an Account</h2>
+        {error && <p className={errorClass}>{error}</p>}
+        <form onSubmit={handleSubmit(onUserRegister)}>
+          <div className="mb-5">
+            <p className={labelClass}>Register as</p>
+            <div className="flex gap-6 mt-1">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  {...register("role")}
+                  id="user"
+                  value="user"
+                  className="accent-violet-600 w-4 h-4"
+                />
+                <span className="text-sm text-stone-700 font-medium">User</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  {...register("role")}
+                  id="author"
+                  value="author"
+                  className="accent-violet-600 w-4 h-4"
+                />
+                <span className="text-sm text-stone-700 font-medium">Author</span>
+              </label>
+            </div>
+          </div>
 
-    <form onSubmit={handleSubmit(onSubmit)}
-    className=' bg-white p-5 rounded-lg'
-    >
-      <h1 className='text-3xl text-purple-500 text-center font-extrabold '>Register Here</h1>
-        <div className='flex items-center gap-4 mb-5 '>
-          
-        <span className='font-bold text-2xl text-gray-700 p-2'>select role</span>
-    <input type="radio" value="user" {...register("role",{required:true})}/> User
-<input type="radio" value="author" {...register("role",{required:true})}/> Author
-        </div>
+          <div className={divider} />
 
-        <input {...register("firstName", { required: true })}
-        placeholder="first name" className='w-full p-2 mb-3 bg-gray-200 rounded'/> 
-        {errors.firstName && <p className='text-red-500'> First name is required</p>}
+          <div className="sm:flex gap-4 mb-4">
+            <div className="flex-1">
+              <label className={labelClass}>First Name</label>
+              <input
+                type="text"
+                {...register("firstName")}
+                placeholder="First name"
+                className={inputClass}
+              />
+            </div>
+            <div className="flex-1">
+              <label className={labelClass}>Last Name</label>
+              <input
+                type="text"
+                {...register("lastName")}
+                placeholder="Last name"
+                className={inputClass}
+              />
+            </div>
+          </div>
 
-        <input {...register("lastName", { required: true })}
-        placeholder="last name" className='w-full p-2 mb-3 bg-gray-200 rounded'/>
-           {errors.lastName &&  <p className='text-red-500'> Last name is required</p>}
+          <div className={formGroup}>
+            <label className={labelClass}>Email</label>
+            <input
+              type="email"
+              {...register("email")}
+              placeholder="you@example.com"
+              className={inputClass}
+            />
+          </div>
 
-        <input type='email' {...register("email", { required: true })}
-        placeholder="email" className='w-full p-2 mb-3 bg-gray-200 rounded'/>
-     
-        <input type='password' {...register("password", { required: true })}
-        placeholder="password" className='w-full p-2 mb-3 bg-gray-200 ronded'/>
-        {errors.password && <p className='text-red-500'>Password is required</p>}
+          <div className={formGroup}>
+            <label className={labelClass}>Password</label>
+            <input
+              type="password"
+              {...register("password")}
+              placeholder="Min. 8 characters"
+              className={inputClass}
+            />
+          </div>
 
-      
-        <input type='text' {...register("profileImageUrl",{required:true})}
-            placeholder="image url"className='w-full p-2 mb-3 bg-gray-200 rounded'/>
-     
-      {errors.firstName && <p>Username is required</p>}
+          <div className={formGroup}>
+            <label className={labelClass}>Profile Image</label>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              {...register("profilePic")}
+              className={inputClass}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (!file) {
+                  setError(null);
+                  return;
+                }
 
-      <button className='bg-cyan-400 text-white px-6 py-2 rounded w-full hover:cursor-pointer hover:bg-blue-700'>Register</button>
-    </form>
+                if (!["image/jpeg", "image/png"].includes(file.type)) {
+                  setError("Only JPG or PNG allowed");
+                  return;
+                }
+
+                if (file.size > 2 * 1024 * 1024) {
+                  setError("File size must be less than 2MB");
+                  return;
+                }
+
+                setError(null);
+              }}
+            />
+          </div>
+
+          <button type="submit" className={submitBtn}>
+            Create Account
+          </button>
+        </form>
+
+        <p className={`${mutedText} text-center mt-5`}>
+          Already have an account?{" "}
+          <NavLink to="/login" className="text-violet-600 hover:text-violet-500 font-medium">
+            Sign in
+          </NavLink>
+        </p>
+      </div>
     </div>
-   
-    
   );
 }
-  
 
-export default Register
+export default Register;

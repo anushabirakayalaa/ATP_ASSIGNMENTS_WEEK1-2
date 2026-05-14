@@ -1,6 +1,5 @@
 // src/styles/common.js
-// Theme: Apple Light — white/f5f5f7 background, #1d1d1f text, #0066cc accent
-// Inspired by apple.com — no gradients, no shadows, pure typography & spacing
+// Theme: Apple Light — clean UI styles only
 
 // ─── Layout ───────────────────────────────────────────
 export const pageBackground = "bg-white min-h-screen"
@@ -57,37 +56,3 @@ export const emptyStateClass    = "text-center text-[#a1a1a6] py-16 text-sm"
 
 // ─── Divider ──────────────────────────────────────────
 export const divider            = "border-t border-[#e8e8ed] my-10"
-
-
-
-
-//fetch (inbuilt feature of js)
-//GET
-let resObj=await fetch("",{method:"GET"})
-if(res.status!==200)
-{
-    throw new Error("")
-}//here we shld always check the status code for every request...if its coming from right response or not
-let res=await resObj.json() //{message:"",payload:""}
-
-// POST
-let resOb=await fetch("",
-    { //need to convert to 
-    method:"POST",
-    headers:{"Content-Type":"application\json"},
-    // body.JSON.stringify(obj)
-})
-let res1=resOb.data
-
-
-
-//axios--(not inbuilt feature in js...need to install and import)
-// GET
-let resObj1=await axios("",{method:"GET"})//automatically checks and throws the error upon the status of the object
-let res2=await resObj1.json()
-
-// POST
-let resOb1=await axios.post("",obj)//no need to covert to js no need to manually create the errors
-let rs=resOb1.data;
-
-

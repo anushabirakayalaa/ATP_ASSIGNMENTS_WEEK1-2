@@ -52,7 +52,7 @@ export const authenticate = async ({email,password})=>
         throw err
     }
     //generate token
-    const token=jwt.sign({userID:user._id,role:user.role,email},
+    const token=jwt.sign({userId:user._id.toString(),role:user.role,email},
     process.env.JWT_SECRET,{
     expiresIn:"1h"});
 
