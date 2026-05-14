@@ -1,13 +1,18 @@
 import exp from 'express'
 import {connect} from 'mongoose'
 import {config} from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { userRoute } from "./APIS/UserAPI.js"
 import { authorRoute } from './APIS/AuthorAPI.js'
 import { adminRoute } from './APIS/AdminAPI.js'
 import cookieParser from "cookie-parser";
 import { commonRoute } from './APIS/CommonAPI.js'
 import cors from 'cors'
-config()//process.env
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+config({ path: path.join(__dirname, '.env') })//process.env
 
 //create express application    
 const app = exp()
@@ -36,8 +41,9 @@ app.use('/admin-api',adminRoute)
 // })
 //connect to db
 const connectDB = async()=>
-{   try{
-    await connect(process.env.DB_URL)//access from .env file
+{   try{ 
+    await connect(process.env.DB_URL)
+    //access from .env file
     console.log("DB Connection succesful")
     //start http server
     app.listen(process.env.PORT,()=>console.log("Serevr started"))
