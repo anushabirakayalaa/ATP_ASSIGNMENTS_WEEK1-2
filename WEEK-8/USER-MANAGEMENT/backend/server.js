@@ -12,7 +12,7 @@ const app = exp();
 // add CORS for the frontend origin(s)
 app.use(cors({
   origin: [
-    'http://localhost:5173',
+    'https://user-management-app-taupe-eight.vercel.app/',
     'http://localhost:5177'
   ]
 }));
