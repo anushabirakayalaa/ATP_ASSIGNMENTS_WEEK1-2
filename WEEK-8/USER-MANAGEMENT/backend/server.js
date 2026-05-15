@@ -11,10 +11,7 @@ config();
 const app = exp();
 // add CORS for the frontend origin(s)
 app.use(cors({
-  origin: [
-    'https://user-management-app-taupe-eight.vercel.app/',
-    'http://localhost:5177'
-  ]
+  origin:"*"
 }));
 // Add body parser middleware
 app.use(exp.json());
