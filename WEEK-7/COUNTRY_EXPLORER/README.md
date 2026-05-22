@@ -1,16 +1,66 @@
-# React + Vite
+# Country Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Country Explorer is a React + Vite app that fetches country data from the REST Countries API and displays it as searchable country cards.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- Tailwind CSS
+- REST Countries API
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Fetches all countries when the app loads.
+- Shows a loading message while data is being fetched.
+- Displays an error message if the API request fails.
+- Searches countries by name.
+- Uses a 500ms debounce on search input.
+- Auto-focuses the search input on page load.
+- Displays country flag, name, capital, population, and region.
+- Uses a responsive grid layout for country cards.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/App.jsx` - fetches country data, stores state, handles search, loading, and error states.
+- `src/components/Search.jsx` - search input with auto-focus and debounce logic.
+- `src/components/CountryList.jsx` - maps the filtered countries array into country cards.
+- `src/components/Country.jsx` - displays a single country card.
+- `src/index.css` - imports Tailwind CSS.
+- `vite.config.js` - Vite configuration.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local Vite URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+## API Used
+
+The app uses:
+
+```text
+https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags
+```
+
+Only the fields needed by the UI are requested: name, capital, population, region, and flags.
+
+## Components Flow
+
+```text
+App
+├── Search
+└── CountryList
+    └── Country
+```
+
+## Output
+
+The app displays a searchable list of countries in card format. Each card includes the country's flag, common name, capital, population, and region.
