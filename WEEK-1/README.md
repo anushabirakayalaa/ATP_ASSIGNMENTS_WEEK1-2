@@ -10,6 +10,15 @@ This week covers the basic building blocks of JavaScript through small practice 
 - Operators for bill calculation, login checks, enrollment checks, and course pricing.
 - Simple data processing tasks for carts, students, employees, movies, transactions, temperatures, courses, and marks.
 
+## Details
+| Method | Core Purpose | Data Return |
+| --- | --- | --- |
+| **`.filter()`** | Sifts through a dataset based on a conditional truth test. | A filtered shallow copy array. |
+| **`.map()`** | Transforms every item or structural element down an assembly line. | A brand new array of equal length. |
+| **`.reduce()`** | Accrues, rolls up, or consolidates a complex matrix into a single ultimate value. | A single scalar result (number, string, obj). |
+| **`.find()`** | Hunts out the *very first* occurrence matching a predicate requirement. | The individual matching item element. |
+| **`.findIndex()`** | Hunts down the position location pointer of a matching asset. | The positive integer index (or `-1`). |
+
 ## Main Folders
 
 - `arrays/` - array method assignments using real-world examples like shopping carts, marks, payroll, movies, and bank transactions.
