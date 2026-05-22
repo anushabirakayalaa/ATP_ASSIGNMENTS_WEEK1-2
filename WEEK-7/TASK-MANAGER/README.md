@@ -1,16 +1,63 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Task Manager is a React + Vite practice app built during Week 7. It demonstrates React components, props, state, conditional rendering, lists, forms, and Tailwind CSS styling.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- Tailwind CSS
+- react-hook-form
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add a task using a form.
+- Store tasks in React state.
+- Display the list of added tasks.
+- Show an empty-state image when no tasks exist.
+- Show the total task count.
+- Pass data and functions between parent and child components using props.
+- Includes extra practice components for forms, registration, props, and state updates.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/App.jsx` - main app file that renders the Task Manager.
+- `src/components/TaskManager.jsx` - parent component that stores the tasks state.
+- `src/components/AddTask.jsx` - form component that accepts a task name and sends it to the parent.
+- `src/components/TasksList.jsx` - displays all added tasks or an empty-state image.
+- `src/components/TasksCount.jsx` - displays the number of tasks.
+- `src/components/FormDemo.jsx` - practice form using `react-hook-form` validations.
+- `src/components/RegistrationDemo.jsx` - user registration form practice with table output.
+- `src/components/StateDemo.jsx` - state practice with counter, arrays, and object updates.
+- `src/components/Test1.jsx` and `src/components/Test2.jsx` - basic component and props practice.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local Vite URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+## Component Flow
+
+```text
+App
+└── TaskManager
+    ├── AddTask
+    ├── TasksList
+    └── TasksCount
+```
+
+## How It Works
+
+`TaskManager` keeps the `tasks` array in state. `AddTask` collects the task name through `react-hook-form` and calls the `addNewTask` function passed from the parent. The updated task array is then passed to `TasksList` and `TasksCount` for display.
+
+## Output
+
+The app displays a simple task manager interface with an add-task form, task list, and task count.
